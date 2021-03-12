@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #USERS
-User.create!({email: 'test@email.com', password: "password", admin?: true, phone_number: "145345334" })
-User.create!({email: 'test2@email.com', password: "password", admin?: false, phone_number: "245345334" })
-User.create!({email: 'test3@email.com', password: "password", admin?: false, phone_number: "345345334" })
-User.create!({email: 'test4@email.com', password: "password", admin?: true, phone_number: "445345334" })
+User.create!({name: "test name", email: 'test@email.com', password: "password", phone_number: "145345334" })
+User.create!({name: "test2 name", email: 'test2@email.com', password: "password", phone_number: "245345334" })
+User.create!({name: "test3 name", email: 'test3@email.com', password: "password", phone_number: "345345334" })
+User.create!({name: "test4 name", email: 'test4@email.com', password: "password", phone_number: "445345334" })
 
 #Stocks 
 Stock.create!({ticker: "SPCE", current_price: 34.88})
