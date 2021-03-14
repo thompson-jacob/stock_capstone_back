@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     #USERS
     post "/users" => "users#create"
     #USERSTOCKS
-    get "/userstocks" => "userstocks#index"
+    get "/userstocks" => "user_stocks#index"
     get "/userstocks/:id" => "userstocks#show"
     post "/userstocks" => "userstocks#create"
     patch "/userstocks/:id" => "userstocks#update"
