@@ -6,15 +6,28 @@ class Api::StocksController < ApplicationController
   end
   
   def show 
-    @stock = Stock.find_by(id: params[:id])
-    response = HTTP.get("https://financialmodelingprep.com/api/v3/quote-short/#{@stock.ticker}?apikey=#{Rails.application.credentials.fmp_api_key}")
-    pp response.parse
-    iex_stock = quote = client.quote("#{@stock.ticker}")
-    render json: {stock: @stock, price: response.parse, iex_stock}
+    @stock = Stock.find_by(ticker: params[:ticker])
+    
+    # https://financialmodelingprep.com/api/v3/shortquote/AAPL?apikey
+    response = HTTP.get("https://financialmodelingprep.com/api/v3/historical-chart/5min/#{@stock.ticker}?apikey=#{Rails.application.credentials.fmp_api_key}")
+
+    response1 = response.parse
+    pp response1
+
+    # response2 = response1.map { |data| data["date"] }
+    response2 = response1.map
+    pp response2
+    # render json: {stock: @stock, price: response2}
+    render json: {stock: @stock}
   end
-
   
+  def stock_search
+    # https://financialmodelingprep.com/api/v3/shortquote/AAPL?apikey
+    response = HTTP.get("https://financialmodelingprep.com/api/v3/quote-short/#{params[:ticker]}?apikey=#{Rails.application.credentials.fmp_api_key}")
 
+    render json: response.parse
+  end
+  
   def create
     @stock = Stock.new(
       ticker: params[:ticker],
