@@ -10,7 +10,9 @@ class Api::UserStocksController < ApplicationController
     #   render json: {errors: "whatever"}
     # end
   end
-
+  #TODO 
+  #Add functionality to get stock id and current price to auto-push to DB
+  
   def create
     @favorite = UserStock.new(
       ticker: params[:ticker],
