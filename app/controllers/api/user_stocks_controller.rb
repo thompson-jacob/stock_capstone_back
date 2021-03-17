@@ -14,14 +14,29 @@ class Api::UserStocksController < ApplicationController
   #Add functionality to get stock id and current price to auto-push to DB
   
   def create
+    stock = Stock.find_or_create_by(ticker: params[:ticker])
     @favorite = UserStock.new(
-      ticker: params[:ticker],
+      stock_id: stock.id,
       user_id: current_user.id,
     )
-    if @favorite.save!
-      render json: @favorite.ticker + "added to list"
+    if @favorite.save
+      render json: @favorite.stock.ticker + "added to list"
     else
       render json: { errors: @favorite.errors.full_messages }, status: :bad_request
     end
+  end
+
+  def destroy_all
+    # @favorite = UserStock.find_by(id: params[:id])
+    @favorites = UserStock.where(user_id: current_user.id, stock_id: params[:stock_id])
+    @favorites.destroy_all
+    render json: {message: " destroyed all"}
+  end
+
+  def toggle
+    # params[:favorite]
+    # params[:stock_id]
+    # if else to create 
+    #findordestroy
   end
 end
