@@ -11,9 +11,18 @@ Rails.application.routes.draw do
     get "/stocks" => "stocks#index"
     get "/stocks" => "stocks#chart_stock"
     get "/stocks/:ticker" => "stocks#show"
+    get "search_bar" => "stocks#search_bar"
+    get "most_active" => "stocks#most_active"
+    get "sector_changes" => "stocks#sector_changes"
     post "/stocks" => "stocks#create"
     patch "/stocks/:id" => "stocks#update"
     delete "/stocks/:id" => "stocks#destroy"
+    
+      #STOCKS_CHARTS
+      #part of stocks chart
+    get "/stock_chart" => "stocks#stock_chart"
+    get "/indicators" => "stocks#indicators"
+
     #SESSIONS
     post "/sessions" => "sessions#create"
     #USERS

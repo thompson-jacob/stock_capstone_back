@@ -5,7 +5,7 @@ class Api::UserStocksController < ApplicationController
     # if current_user
     @user_stocks = current_user.user_stocks
     # @user_stocks = UserStock.all
-    render json: { message: @user_stocks }
+    render json: @user_stocks.as_json(include: :stock)
     # else
     #   render json: {errors: "whatever"}
     # end
