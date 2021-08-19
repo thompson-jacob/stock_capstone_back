@@ -37,5 +37,8 @@ Rails.application.routes.draw do
 
     # TODO
     #PRICES
+   
   end
+  root 'appliation#index'
+  get '/*path', to: 'application#index'
 end

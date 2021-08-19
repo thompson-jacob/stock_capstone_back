@@ -7,16 +7,16 @@ class Api::StocksController < ApplicationController
   def show
     @stock = Stock.find_by(ticker: params[:ticker])
 
-    # https://financialmodelingprep.com/api/v3/shortquote/AAPL?apikey
+   
     response = HTTP.get("https://financialmodelingprep.com/api/v3/historical-chart/5min/#{@stock.ticker}?apikey=#{Rails.application.credentials.fmp_api_key}")
 
     response1 = response.parse
     pp response1
 
-    # response2 = response1.map { |data| data["date"] }
+   
     response2 = response1.map
     pp response2
-    # render json: {stock: @stock, price: response2}
+ 
     render json: { stock: @stock }
   end
 
