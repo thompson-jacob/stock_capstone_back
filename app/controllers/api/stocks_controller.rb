@@ -49,7 +49,7 @@ class Api::StocksController < ApplicationController
   end
 
   def search_bar
-    response = HTTP.get("https://financialmodelingprep.com/api/v3/search?query=#{params[:searchbar]}&limit=10&exchange=NASDAQ&apikey=#{Rails.application.credentials.fmp_api_key}")
+    response = HTTP.get("https://financialmodelingprep.com/api/v3/search?query=#{params[:searchbar]}&limit=10&apikey=#{Rails.application.credentials.fmp_api_key}")
     render json: response.parse
   end
   
