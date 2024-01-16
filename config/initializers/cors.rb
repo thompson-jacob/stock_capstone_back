@@ -5,12 +5,14 @@
 
 # Read more: https://github.com/cyu/rack-cors
 
-Rails.application.config.middleware.insert_before 0, Rack::Cors do
-  allow do
-    origins 'localhost:8080', 'https://diamondhandss.netlify.app', 'https://financialmodelingprep.com'
+allow do
+  origins 'localhost:8080', 
+          'https://diamondhandss.netlify.app',
+          'https://main--diamondhandss.netlify.app', 
+          'https://financialmodelingprep.com'
 
-    resource '*',
-      headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head]
-  end
+  resource '*',
+    headers: :any,
+    methods: [:get, :post, :put, :patch, :delete, :options, :head]
+end
 end
