@@ -19,6 +19,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 # create JSON web tokens
 gem 'jwt', '~> 2.2.2'
+gem 'nokogiri', '~> 1.13'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 # iex stock data
